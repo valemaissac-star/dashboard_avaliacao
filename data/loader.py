@@ -10,25 +10,12 @@ from sqlalchemy import create_engine
 def get_engine() :
     url = st.secrets["DATABASE_URL"]
     return create_engine(url)
+@st.cache_data
 def load_data():
-    paths = [
-        ('arquivos_30_04_26/', 'Pasta arquivos'),
-        ('arquivos/', 'Pasta arquivos'),
-        ('', 'Raiz do repositório'),
-    ]
-    for path_prefix, _ in paths:
-        try:
-            avaliacoes = pd.read_excel(f'{path_prefix}avaliacoes.xlsx')
-            vendedoras = pd.read_excel(f'{path_prefix}vendedoras.xlsx')
-            lojas = pd.read_excel(f'{path_prefix}lojas.xlsx')
-            supervisores = pd.read_excel(f'{path_prefix}supervisores.xlsx')
-            supervisores_lojas = pd.read_excel(f'{path_prefix}supervisores_lojas.xlsx')
-            return avaliacoes, vendedoras, lojas, supervisores, supervisores_lojas
-        except Exception:
-            continue
-    raise FileNotFoundError("❌ Arquivos Excel não encontrados!")
-try:
-    avaliacoes, vendedoras, lojas, supervisores, supervisores_lojas = load_data()
-except FileNotFoundError as e:
-    st.error(str(e))
-    st.stop()
+    engine = get_engine()
+    avaliacoes        = pd.read_sql("SELECT * FROM avaliacoes", engine)
+    vendedoras        = pd.read_sql("SELECT * FROM vendedoras", engine)
+    lojas             = pd.read_sql("SELECT * FROM lojas", engine)
+    supervisores      = pd.read_sql("SELECT * FROM supervisores", engine)
+    supervisores_lojas = pd.read_sql("SELECT * FROM supervisores_lojas", engine)
+    return avaliacoes, vendedoras, lojas, supervisores, supervisores_lojas
