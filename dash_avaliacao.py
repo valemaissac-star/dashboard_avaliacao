@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
-import plotly.express as px
+
 
 st.set_page_config(
     page_title="Dashboard de Avaliações",
@@ -12,7 +12,7 @@ st.set_page_config(
 # ======================================================
 # TEMA VISUAL GLOBAL
 # ======================================================
-
+# ok - codigo copiado
 st.markdown("""
 <style>
     .stApp {
@@ -114,7 +114,7 @@ TEMPLATE_GRAFICO = dict(
 # ======================================================
 # CARREGAMENTO DOS DADOS
 # ======================================================
-
+#ok copiado
 @st.cache_data
 def load_data():
     paths = [
@@ -143,7 +143,7 @@ except FileNotFoundError as e:
 # ======================================================
 # PROCESSAMENTO BASE
 # ======================================================
-
+#ok
 for df in [avaliacoes, vendedoras, lojas, supervisores, supervisores_lojas]:
     df.columns = df.columns.str.lower().str.strip()
 
@@ -181,7 +181,7 @@ meses_disponives = sorted(avaliacoes['mes_ano_str'].dropna().unique().tolist())
 # ======================================================
 # FUNÇÕES AUXILIARES
 # ======================================================
-
+#ok
 def calcular_metricas(df):
     total = len(df)
     media_est = df['estrela_1_5'].mean() if total > 0 else 0
