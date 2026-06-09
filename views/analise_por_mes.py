@@ -5,6 +5,7 @@ from config.theme import cores_vibrantes, template
 from components.ranking import secao_ranking_completa
 import plotly.graph_objects as go
 
+
 def render(dados):
     avaliacoes         = dados['avaliacoes']
     vendedoras         = dados['vendedoras']
@@ -15,7 +16,7 @@ def render(dados):
 
     template_df       = template()
     cores_vibrante_df = cores_vibrantes()
-
+    
     st.markdown("### ⏰ Análise Detalhada por Mês")
 
     if not meses_disponiveis:

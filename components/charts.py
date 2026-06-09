@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-from config.theme import template
+from config.theme import template, style
 
 def grafico_ranking_h(df, col_y, col_x, titulo, colorscale="Plasma", height=500):
     top = df.head(20)

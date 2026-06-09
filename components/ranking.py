@@ -5,12 +5,10 @@ from services.metrics import ranking_vendedoras_df
 from services.metrics import ranking_supervisores_df  
 from services.metrics import ranking_lojas_df 
 from components.charts import grafico_ranking_h
-from config.theme import template
+from config.theme import template, style
 
 def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
-
-    aval_supervisores  = dados['aval_supervisores']
-    # Ranking de Vendedoras
+    style()
     st.markdown("### 🏆 Ranking de Vendedoras")
     rv = ranking_vendedoras_df(aval_vend_df)
 

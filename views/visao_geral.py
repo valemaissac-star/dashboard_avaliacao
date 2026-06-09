@@ -1,7 +1,7 @@
 import streamlit as st
 from components.ranking import secao_ranking_completa
 from services.metrics import calcular_metricas
-from config.theme import cores_vibrantes, template
+from config.theme import cores_vibrantes, template, style
 from components.ranking import secao_ranking_completa
 from services.metrics import ranking_vendedoras_df,ranking_lojas_df
 import plotly.graph_objects as go
@@ -23,7 +23,7 @@ def render(dados):
     template_df = template()
     cores_vibrante_df = cores_vibrantes()
     st.markdown("### 📊 Visão Geral da Empresa — Todos os Períodos")
-
+    style()
     total_aval, media_estrelas, media_recomendacao, bem_pct = calcular_metricas(avaliacoes)
 
     col1, col2, col3 = st.columns(3)

@@ -1,5 +1,5 @@
 from services.metrics import calcular_metricas
-from config.theme import cores_vibrantes, template
+from config.theme import cores_vibrantes, template,style
 from components.ranking import secao_ranking_completa
 from services.metrics import ranking_vendedoras_df,ranking_lojas_df
 import plotly.graph_objects as go
@@ -9,9 +9,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 
-
 cores_vibrante_df = cores_vibrantes()
-
 def render(dados):
 
     avaliacoes = dados['avaliacoes']
@@ -60,7 +58,7 @@ def render(dados):
             line=dict(color="rgba(225, 255, 255, 0.16)", width=1),
         ),
     )])
-    fig_vol.update_layout(template_df, title="📊 Quantidade de Avaliações por Mês", height=500,
+    fig_vol.update_layout(template_df,  title="📊 Quantidade de Avaliações por Mês", height=500,
                           xaxis=dict(title="Mês", tickfont=dict(size=14)),
                           yaxis=dict(title="Quantidade", tickfont=dict(size=14)))
     st.plotly_chart(fig_vol, width='stretch', key="vol_mensal")
@@ -69,6 +67,7 @@ def render(dados):
 
     col_g1, col_g2 = st.columns(2)
     with col_g1:
+        
         fig_est = go.Figure()
         fig_est.add_trace(go.Scatter(
             x=evo['Mês'], y=evo['media_estrelas'],

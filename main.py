@@ -8,7 +8,7 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
-style()
+
 
 dados = get_dataframes()
 
