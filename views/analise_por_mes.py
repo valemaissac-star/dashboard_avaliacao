@@ -82,7 +82,7 @@ def render(dados):
             textfont=dict(size=16),
         )])
         fig_p1.update_layout(template_df, title=f"⭐ Estrelas — {mes_sel}", height=400)  
-        st.plotly_chart(fig_p1, use_container_width=True, key=f"pizza_est_{mes_sel}")
+        st.plotly_chart(fig_p1, width='stretch', key=f"pizza_est_{mes_sel}")
 
     with col_p2:
         dist_atend = aval_mes['bem_atendimento'].value_counts()
@@ -94,7 +94,7 @@ def render(dados):
             textfont=dict(size=16),
         )])
         fig_p2.update_layout(template_df, title=f"😊 Bem Atendimento — {mes_sel}", height=400) 
-        st.plotly_chart(fig_p2, use_container_width=True, key=f"pizza_atend_{mes_sel}")
+        st.plotly_chart(fig_p2, width='stretch', key=f"pizza_atend_{mes_sel}")
 
     st.markdown("---")
 
@@ -110,7 +110,7 @@ def render(dados):
         tab_sem         = vend_sem_mes[['vendedora', 'loja']].copy()
         tab_sem.columns = ['Vendedora', 'Loja']
         st.error(f"⚠️ {len(tab_sem)} vendedoras sem avaliação em {mes_sel}")
-        st.dataframe(tab_sem.sort_values(['Loja', 'Vendedora']), use_container_width=True, hide_index=True)
+        st.dataframe(tab_sem.sort_values(['Loja', 'Vendedora']),width='stretch', hide_index=True)
     else:
         st.success(f"✅ Todas as vendedoras têm avaliação em {mes_sel}!")
 

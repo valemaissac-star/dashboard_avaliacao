@@ -63,7 +63,7 @@ def render(dados):
     fig_vol.update_layout(template_df, title="📊 Quantidade de Avaliações por Mês", height=500,
                           xaxis=dict(title="Mês", tickfont=dict(size=14)),
                           yaxis=dict(title="Quantidade", tickfont=dict(size=14)))
-    st.plotly_chart(fig_vol, use_container_width=True, key="vol_mensal")
+    st.plotly_chart(fig_vol, width='stretch', key="vol_mensal")
 
     st.markdown("---")
 
@@ -82,7 +82,7 @@ def render(dados):
         fig_est.update_layout(template_df, title="⭐ Evolução da Média de Estrelas", height=400,
                               xaxis=dict(title="Mês"),
                               yaxis=dict(title="Média (1-5)", range=[1, 5.4]))
-        st.plotly_chart(fig_est, use_container_width=True, key="evo_estrelas")
+        st.plotly_chart(fig_est, width='stretch', key="evo_estrelas")
 
     with col_g2:
         fig_rec = go.Figure()
@@ -99,7 +99,7 @@ def render(dados):
         fig_rec.update_layout(template_df, title="👍 Evolução da Média de Recomendação", height=400,
                               xaxis=dict(title="Mês"),
                               yaxis=dict(title="Média (1-10)", range=[0, 11]))
-        st.plotly_chart(fig_rec, use_container_width=True, key="evo_recomendacao")
+        st.plotly_chart(fig_rec, width='stretch', key="evo_recomendacao")
 
     st.markdown("---")
 
@@ -119,7 +119,7 @@ def render(dados):
     fig_bem.update_layout(template_df, title="😊 Evolução do % Bem Atendimento", height=390,
                           xaxis=dict(title="Mês"),
                           yaxis=dict(title="%", range=[0, 110]))
-    st.plotly_chart(fig_bem, use_container_width=True, key="evo_bem_atend")
+    st.plotly_chart(fig_bem, width='stretch', key="evo_bem_atend")
 
     st.markdown("---")
 
@@ -130,4 +130,4 @@ def render(dados):
         'media_recomendacao': 'Média Recomendação',
         'bem_atendimento': '% Bem Atendimento'
     })
-    st.dataframe(evo_display.round(2), use_container_width=True, hide_index=True)
+    st.dataframe(evo_display.round(2),width='stretch', hide_index=True)
