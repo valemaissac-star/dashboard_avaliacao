@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 
 
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_data():
 
     url = st.secrets["DATABASE_URL"]
@@ -15,5 +15,5 @@ def load_data():
     lojas              = pd.read_sql("SELECT * FROM lojas", engine)
     supervisores       = pd.read_sql("SELECT * FROM supervisores", engine)
     supervisores_lojas = pd.read_sql("SELECT * FROM supervisores_lojas", engine)
-    engine.dispose()
+   
     return avaliacoes, vendedoras, lojas, supervisores, supervisores_lojas
