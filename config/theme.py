@@ -22,6 +22,7 @@ def template():
        font=dict(family="Inter, sans-serif", size=14, color="#e0e0ff"),
        title_font=dict(size=20, color="#ffffff", family="Inter, sans-serif"),
 )
+  return TEMPLATE_GRAFICO
 
 
 def style():
