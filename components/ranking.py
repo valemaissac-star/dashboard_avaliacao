@@ -15,7 +15,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
     if len(rv) > 0:
         st.plotly_chart(grafico_ranking_h(rv, 'Vendedora', 'Score Final', 'Top Vendedoras', "Plasma", 550),
                         width='stretch', key=f"rank_vend_{sufixo}")
-        st.dataframe(rv.round(2),use_container_width=True, hide_index=True)
+        st.dataframe(rv.round(2),use_container_width= True, hide_index=True)
 
         st.markdown("## 🔎 Detalhes por Vendedora 👩‍💼")
         list_v = sorted(rv['Vendedora'].dropna().unique().tolist())
@@ -50,7 +50,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
                     )
                 )])
                 fig.update_layout(template(), title=f"⭐ Estrelas — {v_sel}", height=380)
-                st.plotly_chart(fig, width='stretch', key=f"estrelas_vend_{sufixo}_{v_sel}")
+                st.plotly_chart(fig, use_container_width= True, key=f"estrelas_vend_{sufixo}_{v_sel}")
 
             with cc2:
                 dist2 = aval_sel['bem_atendimento'].value_counts()
@@ -62,7 +62,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
                     textfont=dict(size=15)
                 )])
                 fig2.update_layout(template(), title=f"🤩 Atendimento — {v_sel}", height=380)
-                st.plotly_chart(fig2, width='stretch', key=f"atend_vend_{sufixo}_{v_sel}")
+                st.plotly_chart(fig2, use_container_width=True, key=f"atend_vend_{sufixo}_{v_sel}")
 
         if 'comentario_cliente' in aval_sel.columns:
             comentarios = aval_sel[aval_sel['comentario_cliente'].notna()]
@@ -93,7 +93,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
     if len(rs) > 0:
         st.plotly_chart(grafico_ranking_h(rs, 'Supervisor', 'Score Final', 'Ranking Supervisores', 'Rainbow', 450),
                         width='stretch', key=f"rank_sup_{sufixo}")
-        st.dataframe(rs.round(2), width='stretch', hide_index=True)
+        st.dataframe(rs.round(2), use_container_width= True, hide_index=True)
     else:
         st.info("Sem avaliações de supervisores neste período.")
 
@@ -104,7 +104,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
     rl = ranking_lojas_df(aval_df, dados['lojas'])
     if len(rl) > 0:
         st.plotly_chart(grafico_ranking_h(rl, 'Loja', 'Score Final', 'Top Lojas 🏬', 'Turbo', 550),
-                        width='stretch', key=f"rank_loja_{sufixo}")
-        st.dataframe(rl.round(2),width='stretch', hide_index=True)
+                       use_container_width=True, key=f"rank_loja_{sufixo}")
+        st.dataframe(rl.round(2),use_container_width=True, hide_index=True)
     else:
         st.info("Sem avaliações de lojas neste período.")
