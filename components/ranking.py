@@ -15,7 +15,7 @@ def secao_ranking_completa(dados,aval_df, aval_vend_df, aval_sup_df, sufixo=""):
     if len(rv) > 0:
         st.plotly_chart(grafico_ranking_h(rv, 'Vendedora', 'Score Final', 'Top Vendedoras', "Plasma", 550),
                         width='stretch', key=f"rank_vend_{sufixo}")
-        st.dataframe(rv.round(2),width='stretch', hide_index=True)
+        st.dataframe(rv.round(2),use_container_width=True, hide_index=True)
 
         st.markdown("## 🔎 Detalhes por Vendedora 👩‍💼")
         list_v = sorted(rv['Vendedora'].dropna().unique().tolist())
