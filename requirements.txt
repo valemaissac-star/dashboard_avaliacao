@@ -8,3 +8,4 @@ psycopg2-binary==2.9.10
 bcrypt
 pyyaml
 streamlit-authenticator==0.3.2
+pyjwt>=2.11.0 # not directly required, pinned by Snyk to avoid a vulnerability
