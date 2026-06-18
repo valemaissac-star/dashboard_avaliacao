@@ -108,3 +108,106 @@ def style():
     }
    </style>
    """, unsafe_allow_html=True)
+def inject_login_css():
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"] {display: none;}
+        header {visibility: hidden;}
+
+        .stApp {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e) !important;
+        }
+
+        /* Centraliza o bloco de login */
+        section.main > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+
+        /* Card */
+        div[data-testid="stForm"] {
+            width: 400px !important;
+            min-width: 400px !important;
+            padding: 2.8rem 2.5rem !important;
+            border-radius: 20px !important;
+            background: linear-gradient(160deg, #1a1a3e, #12122b) !important;
+            border: 1px solid rgba(100,100,255,0.25) !important;
+            box-shadow: 0 0 50px rgba(80,60,200,0.35) !important;
+        }
+
+        /* Inputs */
+        div[data-testid="stForm"] input {
+            background: rgba(255,255,255,0.06) !important;
+            color: #e0e0ff !important;
+            border: 1px solid rgba(100,100,255,0.35) !important;
+            border-radius: 10px !important;
+            font-size: 1rem !important;
+        }
+
+        /* Labels */
+        div[data-testid="stForm"] label p {
+            color: #aaaaff !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        /* Botão de SUBMIT (Login) - só o tipo submit */
+        div[data-testid="stForm"] [data-testid="stFormSubmitButton"] button {
+            width: 100% !important;
+            background: linear-gradient(135deg, #6600cc, #9900ff) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            font-size: 1rem !important;
+            border-radius: 12px !important;
+            border: none !important;
+            padding: 0.7rem 0 !important;
+            box-shadow: 0 0 24px rgba(153,0,255,0.4) !important;
+        }
+
+        /* Botão do olho (ver senha) — resetar para transparente */
+        div[data-testid="stForm"] button:not([data-testid="stFormSubmitButton"] button) {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            color: #aaaaff !important;
+            padding: 0 !important;
+            width: auto !important;
+        }
+        </style>
+
+        <div style="text-align:center; padding: 3vh 0 1.5rem;">
+            <div style="
+                width: 56px; height: 56px;
+                background: linear-gradient(135deg, #6600cc, #9900ff);
+                border-radius: 16px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 26px;
+                box-shadow: 0 0 22px rgba(153,0,255,0.45);
+                margin-bottom: 1.1rem;
+            ">📊</div>
+            <h2 style="
+                color: #ffffff;
+                font-weight: 800;
+                font-size: 1.9rem;
+                margin: 0 0 0.3rem;
+                letter-spacing: -0.5px;
+            ">Valemais Promotora</h2>
+            <p style="
+                color: #9399b2;
+                font-size: 0.78rem;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 0.6px;
+            ">Dashboard de Avaliações</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
