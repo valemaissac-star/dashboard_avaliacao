@@ -8,3 +8,5 @@ psycopg2-binary==2.9.10
 bcrypt
 pyyaml
 streamlit-authenticator==0.3.2
+PyJWT>=2.13.0
+zipp>=3.19.1
